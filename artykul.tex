@@ -1,0 +1,160 @@
+\documentclass[12pt]{oska}
+
+\usepackage[english,polish]{babel}
+
+\usepackage{polski}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}  % zestaw fontów
+\usepackage{indentfirst}
+\frenchspacing
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[all,defaultlines=2]{nowidow}
+\usepackage{float}
+\usepackage{makecell}
+\usepackage{siunitx}
+\sisetup{output-decimal-marker = {,}}
+\usepackage{icomma}
+\let\lll\undefined
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{mathtools}
+\usepackage{import}		% wklejanie pdf_tex
+\usepackage{xcolor}		% kolory
+\usepackage{microtype}
+\usepackage{tabularx}
+
+\usepackage{placeins}	% poprawia float
+
+\let\Oldsection\section
+\renewcommand{\section}{\FloatBarrier\Oldsection}
+
+\let\Oldsubsection\subsection
+\renewcommand{\subsection}{\FloatBarrier\Oldsubsection}
+
+\let\Oldsubsubsection\subsubsection
+\renewcommand{\subsubsection}{\FloatBarrier\Oldsubsubsection}
+
+\setlength{\emergencystretch}{3em}
+
+\usepackage[
+style=numeric,
+sorting=none,
+language=autobib,
+autolang=other,
+backref=false,
+isbn=true,
+url=false,
+maxbibnames=6,
+minbibnames=6,
+backend=biber
+]{biblatex}
+
+\AtBeginBibliography{
+  \renewcommand\labelnamepunct{:\space}
+  \renewcommand\newunitpunct{\addcomma\space}
+  \renewcommand{\finentrypunct}{}
+
+  \renewcommand{\bibopenparen}{\addcomma\addspace}
+  \renewcommand{\bibcloseparen}{\addspace}
+}
+
+\usepackage{csquotes}
+\DeclareQuoteAlias{croatian}{polish}
+
+\usepackage{icomma}
+\usepackage{newtxtext}
+
+\usepackage{listings}
+\lstloadlanguages{TeX}
+
+\lstset{
+  literate={ą}{{\k{a}}}1
+  {ć}{{\'c}}1
+  {ę}{{\k{e}}}1
+  {ó}{{\'o}}1
+  {ń}{{\'n}}1
+  {ł}{{\l{}}}1
+  {ś}{{\'s}}1
+  {ź}{{\'z}}1
+  {ż}{{\.z}}1
+  {Ą}{{\k{A}}}1
+  {Ć}{{\'C}}1
+  {Ę}{{\k{E}}}1
+  {Ó}{{\'O}}1
+  {Ń}{{\'N}}1
+  {Ł}{{\L{}}}1
+  {Ś}{{\'S}}1
+  {Ź}{{\'Z}}1
+  {Ż}{{\.Z}}1,
+  basicstyle=\footnotesize\ttfamily,
+}
+
+\AtBeginDocument{
+  \renewcommand{\tablename}{\textbf{Tabela}}
+  \renewcommand{\figurename}{\textbf{Rysunek}}
+}
+
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage[flushleft]{threeparttable}
+
+% defines the X column to use m (\parbox[c]) instead of p (`parbox[t]`)
+\newcolumntype{C}[1]{>{\hsize=#1\hsize\centering\arraybackslash}X}
+
+\setlength{\cftsecnumwidth}{10mm}
+\setcounter{secnumdepth}{4}
+\brokenpenalty=10000\relax
+
+\titlePL{Zastosowanie uczenia maszynowego do wykrycia metody
+kompresji stratnej sygnału audio}
+\titleEN{Audio compression method identification through machine learning}
+\affiliation{Akademia Górniczo-Hutnicza w Krakowie}
+
+\namem{Szymon}
+\surnamem{Mikulicz}
+\email{szymon.mikulicz@posteo.net}
+
+\namei{} \surnamei{}
+\nameii{} \surnameii{}
+\nameiii{} \surnameiii{}
+\nameiiii{} \surnameiiii{}
+\nameiiiii{} \surnameiiiii{}
+
+\summaryPL{%
+  W artykule opisano koncepcję stworzenia rozwiązania programowego
+  wykorzystującego technologię uczenia maszynowego do rozpoznania metody
+  kompresji stratnej zastosowanej w pliku audio. Aplikacja pozwoli
+  zidentyfikować pliki w formacie bezstratnym (LPCM, FLAC itp.), które uzyskano
+  poprzez dekompresję plików w formacie stratnym (MP3, AAC, OGG itp.).
+  Zastosowanie uczenia maszynowego oraz zaawansowanych algorytmów ekstrakcji
+  cech pozwoli wykryć metody kompresji, których nie da się wykryć przy pomocy
+  algorytmów wyszukujących artefakty ani poprzez naoczne badanie
+  charakterystyki częstotliwościowej.%
+}
+
+\summaryEN{Streszczenie EN}
+
+\addbibresource{bibliografia.bib}
+
+\begin{document}
+
+\maketitles
+
+\section{Wstęp}
+
+
+
+\section{Druga część}
+
+\section{Wnioski}
+
+\printbibliography
+
+\end{document}
