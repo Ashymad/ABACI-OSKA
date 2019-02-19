@@ -149,9 +149,23 @@ kompresji stratnej sygnału audio}
 
 \section{Wstęp}
 
+Analogowy sygnał elektryczny reprezentowany jest w postaci cyfrowej najczęściej
+jako LPCM (ang. \textit{Linear Pulse-Code Modulation}), na przykład w plikach
+WAVE, jest to jednak format który jest bardzo mało efektywny pod względem
+zajmowanej przestrzeni dyskowej, co ma szczególne znaczenie w przypadku
+transmisji danych przez internet, gdzie dąży się do zmniejszenia rozmiarów
+plików przesyłanych. W celu zmniejszenia ilości danych potrzebnych na zapis
+sygnału audio stosuje się metody kompresji stratnej oraz bezstratnej. Częściej
+stosowana w przesyle danych jest kompresja stratna, gdyż pozwala ona na
+znacznie mniejszy stosunek rozmiaru pliku skompresowanego do oryginalnego na
+poziomie nawet kilku procent, od stratnej, dla której ta wartość wynosi około
+pięćdziesięciu procent. W artykule zostanie omówione w jaki sposób
+przeprowadzana jest kompresja stratna i w jaki sposób można wykorzystać tę
+wiedzę do ekstrakcji cech z sygnałów w celu trenowania modeli uczenia
+maszynowego do rozróżnienia plików oryginalnych od plików zmodyfikowanych przez
+algorytm kompresji stratnej.
 
-
-\section{Druga część}
+\section{Kompresja stratna plików audio}
 
 \section{Wnioski}
 
