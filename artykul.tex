@@ -26,6 +26,8 @@
 \usepackage{xcolor}		% kolory
 \usepackage{microtype}
 \usepackage{tabularx}
+\usepackage{pgfplots}
+\let\pgfimage\includegraphics
 
 \usepackage{placeins}	% poprawia float
 
@@ -183,6 +185,27 @@ rysunek \ref{fig:comp_scheme}.
   \centering
   \import{vecgraphics/}{comp_scheme.pdf_tex}
   \caption{Schemat kompresji stratnej plików audio}
+\end{figure}
+
+\begin{figure}\label{fig:mp3_320}
+  \centering
+  \import{plots/}{320.pgf}
+  \caption{Spektrogram pliku MP3 \SI{320}{\kilo\bit\per\second}}
+\end{figure}
+\begin{figure}\label{fig:mp3_256}
+  \centering
+  \import{plots/}{256.pgf}
+  \caption{Spektrogram pliku MP3 \SI{256}{\kilo\bit\per\second}}
+\end{figure}
+\begin{figure}\label{fig:mp3_196}
+  \centering
+  \import{plots/}{196.pgf}
+  \caption{Spektrogram pliku MP3 \SI{196}{\kilo\bit\per\second}}
+\end{figure}
+\begin{figure}\label{fig:mp3_128}
+  \centering
+  \import{plots/}{128.pgf}
+  \caption{Spektrogram pliku MP3 \SI{128}{\kilo\bit\per\second}}
 \end{figure}
 \section{Wnioski}
 
