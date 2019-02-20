@@ -93,11 +93,6 @@ backend=biber
   basicstyle=\footnotesize\ttfamily,
 }
 
-\AtBeginDocument{
-  \renewcommand{\tablename}{\textbf{Tabela}}
-  \renewcommand{\figurename}{\textbf{Rysunek}}
-}
-
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{multirow}
@@ -167,6 +162,28 @@ algorytm kompresji stratnej.
 
 \section{Kompresja stratna plików audio}
 
+Kompresja stratna plików audio przebiega w kilku krokach. Najpierw wyznaczane
+są współczynniki czasowo-częstotliwościowe sygnału, poprzez przeprowadzenie
+transformacji. W większości metod stosuje się MDCT (ang. \textit{Modified
+Digital Cosine Transform}), zespół filtrów PQMF (ang. \textit{Pseudo-Quadrature Filter
+Banks}) lub rozwiązanie hybrydowe które wykorzystuje obie te transformacje.
+Transformacja kosinusowa MDCT:
+\begin{equation}\label{eq:mdct}
+  X_k = \sum_{n=0}^{2N-1}x_n\cos\left[\frac{\pi}{N}\left(n+\frac{1}{2}+\frac{N}{2}\right)\left(k+\frac{1}{2}\right)\right],
+\end{equation}
+ma tę właściwość, że większość współczynników uzyskanych w jej wyniku ma bardzo
+niewielkie wartości, co jest wykorzystywane w kompresji, gdyż w wyniku
+kwantyzacji dużo współczynników osiąga wartość zero. Stopień kwantyzacji dla
+fragmentów sygnału jest kontrolowany przez model psychoakustyczny, który jest
+tworzony przez algorytm na podstawie sygnału wejściowego, co pozwala na
+wycięcie informacji, które w minimalnym stopniu wpływają na odbiór sygnału
+przez człowieka. Uproszczony schemat procesu kompresji stratnej przedstawia
+rysunek \ref{fig:comp_scheme}.
+\begin{figure}[!tbh]\label{fig:comp_scheme}
+  \centering
+  \import{vecgraphics/}{comp_scheme.pdf_tex}
+  \caption{Schemat kompresji stratnej plików audio}
+\end{figure}
 \section{Wnioski}
 
 \printbibliography
