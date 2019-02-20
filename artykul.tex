@@ -181,32 +181,78 @@ tworzony przez algorytm na podstawie sygnału wejściowego, co pozwala na
 wycięcie informacji, które w minimalnym stopniu wpływają na odbiór sygnału
 przez człowieka. Uproszczony schemat procesu kompresji stratnej przedstawia
 rysunek \ref{fig:comp_scheme}.
-\begin{figure}[!tbh]\label{fig:comp_scheme}
+
+\begin{figure}[!tbh]
   \centering
   \import{vecgraphics/}{comp_scheme.pdf_tex}
   \caption{Schemat kompresji stratnej plików audio}
+  \label{fig:comp_scheme}
 \end{figure}
 
-\begin{figure}\label{fig:mp3_320}
+Proces kompresji stratnej wprowadza do sygnału zniekształcenia, tak zwane
+\textit{artefakty}, których występowanie wynika z zmiennych poziomów
+kwantyzacji w wyniku działania modelu psychoakustycznego oraz z efektów
+brzegowych powstałych w procesie transformacji i konsekwentnie transformacji
+odwrotnej, podczas dekompresji sygnału.Rysunki od \ref{fig:mp3_320} do \ref{fig:mp3_128}
+przedstawiają ten sam fragment muzyki po kompresji i dekompresji MP3 z coraz
+mniejszą przepływnością (eng. \textit{bitrate}), wartością oznaczającą ilość
+danych na sekundę sygnału. Na tych spektrogramach z łatwością można zauważyć
+artefakty kompresji w szczególności jako wycięcia wysokich częstotliwości
+zwiększające się wraz z malejącą przepływnością.
+\begin{figure}[!tbh]
   \centering
   \import{plots/}{320.pgf}
   \caption{Spektrogram pliku MP3 \SI{320}{\kilo\bit\per\second}}
+  \label{fig:mp3_320}
 \end{figure}
-\begin{figure}\label{fig:mp3_256}
+\begin{figure}[!tbh]
   \centering
   \import{plots/}{256.pgf}
   \caption{Spektrogram pliku MP3 \SI{256}{\kilo\bit\per\second}}
+  \label{fig:mp3_256}
 \end{figure}
-\begin{figure}\label{fig:mp3_196}
+\begin{figure}[!tbh]
   \centering
   \import{plots/}{196.pgf}
   \caption{Spektrogram pliku MP3 \SI{196}{\kilo\bit\per\second}}
+  \label{fig:mp3_196}
 \end{figure}
-\begin{figure}\label{fig:mp3_128}
+\begin{figure}[!tbh]
   \centering
   \import{plots/}{128.pgf}
   \caption{Spektrogram pliku MP3 \SI{128}{\kilo\bit\per\second}}
+  \label{fig:mp3_128}
 \end{figure}
+\section{Poprzednie prace}
+Rozwiązania pozwalające wykryć rodzaj i parametry kompresji stratnej audio
+zostały zaproponowane w poprzednich pracach w których także pokazano
+ich skuteczność. W szczególności: wykorzystano dużą ilość parametrów
+statystycznych fragmentu sygnału audio do konstrukcji wektorów cech
+wykorzystanych następnie do trenowania algorytmów uczenia maszynowego%
+\cite{Hicsonmez2011AudioCI}, następnie przetestowano otrzymaną sieć na serii
+sygnałów mowy i muzyki skompresowanych różnymi kodekami z przepływościami poniżej
+\SI{128}{\kilo\bit\per\second}, otrzymując średnią dokładność
+\SI{94.77}{\percent}\cite{Hicsonmez2013MethodsIT}; wykorzystano sieci CNN (eng.
+\textit{Convolutional Neural Network}), metodę uczenia maszynowego stosowaną
+często w rozpoznawaniu obrazów, które trenowano na spektrogramach fragmentów
+sygnałów audio (parametry spektrogramu ustalono odgórnie), otrzymując średnią
+dokładność około \SI{98}{\percent} testując uzyskaną sieć na plikach
+skompresowanych różnymi kodekami z przepływnością od \num{32} do
+\SI{320}{\kilo\bit\per\second}\cite{Hennequin2017CodecIL}; skonstruowano także
+algorytm niewykorzystujący uczenia maszynowego, który rozpoznaje metodę
+kompresji audio na podstawie różnic energii pomiędzy kolejnymi transformatami o
+parametrach stosowanych do kompresji danym kodekiem, przetestowany na muzyce i
+fragmentach ścieżki filmowej uzyskując dokładność
+\SI{99.6}{\percent}\cite{Kim2018LossyAC}.
+
+Jak widać istnieje wiele metod które bardzo skutecznie wykrywają rodzaj
+kodowania zastosowanego do pliku, szczególnie interesujące jest rozwiązanie
+niewykorzystujące uczenia maszynowego, lecz posiada ono wady: nie pozwala w
+obecnej postaci na wykrycie parametrów kompresji oraz, przede wszystkim, wymaga
+znajomości parametrów stosowanych do kompresji danego kodeka audio, co może być
+trudne w przypadku kodeków własnościowych których architektura jest niedostępna
+publicznie.
+\section{Nowa koncepcja}
 \section{Wnioski}
 
 \printbibliography
