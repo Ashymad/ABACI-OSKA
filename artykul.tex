@@ -136,7 +136,16 @@ kompresji stratnej sygnału audio}
   charakterystyki częstotliwościowej.%
 }
 
-\summaryEN{Streszczenie EN}
+\summaryEN{%
+  The paper describes an idea for a new software solution, that uses machine
+  learning to identify method of lossy compression used in an audio file. The
+  application will be able to identify files in a lossless format (LPCM, FLAC,
+  etc.) that have been obtained by decompression of files in a lossy format
+  (MP3, AAC, OGG, etc.). The usage of machine learning and advanced algorythms
+  for feature extraction will allow to detect methods of compression that are
+  not able to be detected by algorhythms searching for artifacts or by looking
+  at the frequency spectrum.
+}
 
 \addbibresource{bibliografia.bib}
 
@@ -274,6 +283,15 @@ Schemat proponowanego rozwiązania przedstawia rysunek \ref{fig:new_scheme}.
 \end{figure}
 
 \section{Wnioski}
+
+Na podstawie rozwiązań które zostały opisane w literaturze zaproponowano nowy
+algorytm do detekcji kompresji audio, którego celem jest pozbycie się
+ograniczeń dotychczasowych algorytmów, jednakże nie przeprowadzono jego
+ewaluacji, toteż nieznane są jego możliwości. W dalszych pracach zostanie
+napisana aplikacja do detekcji wykorzystująca dotychczasowe algorytmy i
+implementująca opisane w tym artykule nowe rozwiązanie, po czym zostanie
+wykonany szereg testów na stosowanych kodekach dla wszelkiego rodzaju sygnałów
+audio.
 
 \printbibliography
 
