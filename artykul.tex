@@ -253,6 +253,26 @@ znajomości parametrów stosowanych do kompresji danego kodeka audio, co może b
 trudne w przypadku kodeków własnościowych których architektura jest niedostępna
 publicznie.
 \section{Nowa koncepcja}
+Zaproponowano nowy system detekcji kompresji audio, który poszerza metodę
+opisaną w \cite{Kim2018LossyAC}. Aby zredukować ograniczenia oryginalnego
+rozwiązania, zamiast stosować metodę znajdywania maksimum i liczenia średniej
+geometrycznej z uzyskanych różnic energii uzyskane transformaty wykorzystane
+zostaną do treningu sieci neuronowej w celu wydobycia z nich informacji o
+metodzie i poziomie kompresji sygnału. Ponadto zostanie wytrenowana druga sieć
+która na podstawie spektrogramu sygnału wyznaczy rodzaj i parametry
+transformaty zastosowanej do kompresji sygnału tak aby współczynnik pewności
+(ang.  \textit{confidence}) sieci rozpoznającej był jak największy.  Pozwoli to
+na skuteczne rozpoznanie rodzaju i parametrów kodeka zastosowanego do kompresji
+pliku bez konieczności posiadania uprzedniej wiedzy o działaniu kodeków.
+Schemat proponowanego rozwiązania przedstawia rysunek \ref{fig:new_scheme}.
+
+\begin{figure}[!tbh]
+  \centering
+  \import{vecgraphics/}{new_scheme.pdf_tex}
+  \caption{Schemat kompresji stratnej plików audio}
+  \label{fig:new_scheme}
+\end{figure}
+
 \section{Wnioski}
 
 \printbibliography

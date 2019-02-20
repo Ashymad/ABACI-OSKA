@@ -1,5 +1,3 @@
-# Matplotlib pgf plots
-*.pgf
 # HDF5 data files
 *.h5
 # Data files exported from LabVIEW
