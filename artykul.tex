@@ -140,7 +140,7 @@ kompresji stratnej sygnału audio}
   The paper describes an idea for a new software solution, that uses machine
   learning to identify method of lossy compression used in an audio file. The
   application will be able to identify files in a lossless format (LPCM, FLAC,
-  etc.) that have been obtained by decompression of files in a lossy format
+  etc.) that have been obtained by decompression of files in a~lossy format
   (MP3, AAC, OGG, etc.). The usage of machine learning and advanced algorythms
   for feature extraction will allow to detect methods of compression that are
   not able to be detected by algorhythms searching for artifacts or by looking
@@ -161,7 +161,7 @@ WAVE, jest to jednak format który jest bardzo mało efektywny pod względem
 zajmowanej przestrzeni dyskowej, co ma szczególne znaczenie w przypadku
 transmisji danych przez internet, gdzie dąży się do zmniejszenia rozmiarów
 plików przesyłanych. W celu zmniejszenia ilości danych potrzebnych na zapis
-sygnału audio stosuje się metody kompresji stratnej oraz bezstratnej. Częściej
+sygnału audio stosuje się metody kompresji stratnej lub bezstratnej. Częściej
 stosowana w przesyle danych jest kompresja stratna, gdyż pozwala ona na
 znacznie mniejszy stosunek rozmiaru pliku skompresowanego do oryginalnego na
 poziomie nawet kilku procent, od stratnej, dla której ta wartość wynosi około
@@ -175,9 +175,10 @@ algorytm kompresji stratnej.
 
 Kompresja stratna plików audio przebiega w kilku krokach. Najpierw wyznaczane
 są współczynniki czasowo-częstotliwościowe sygnału, poprzez przeprowadzenie
-transformacji. W większości metod stosuje się MDCT (ang. \textit{Modified
+transformacji. W~większości metod stosuje się MDCT (ang. \textit{Modified
 Digital Cosine Transform}), zespół filtrów PQMF (ang. \textit{Pseudo-Quadrature Filter
-Banks}) lub rozwiązanie hybrydowe które wykorzystuje obie te transformacje.
+Banks}) lub rozwiązanie hybrydowe które wykorzystuje obie te
+transformacje\cite{Bosi2002IntroductionDA}.
 Transformacja kosinusowa MDCT:
 \begin{equation}\label{eq:mdct}
   X_k = \sum_{n=0}^{2N-1}x_n\cos\left[\frac{\pi}{N}\left(n+\frac{1}{2}+\frac{N}{2}\right)\left(k+\frac{1}{2}\right)\right],
@@ -202,7 +203,7 @@ Proces kompresji stratnej wprowadza do sygnału zniekształcenia, tak zwane
 \textit{artefakty}, których występowanie wynika z zmiennych poziomów
 kwantyzacji w wyniku działania modelu psychoakustycznego oraz z efektów
 brzegowych powstałych w procesie transformacji i konsekwentnie transformacji
-odwrotnej, podczas dekompresji sygnału.Rysunki od \ref{fig:mp3_320} do \ref{fig:mp3_128}
+odwrotnej, podczas dekompresji sygnału. Rysunki od \ref{fig:mp3_320} do \ref{fig:mp3_128}
 przedstawiają ten sam fragment muzyki po kompresji i dekompresji MP3 z coraz
 mniejszą przepływnością (eng. \textit{bitrate}), wartością oznaczającą ilość
 danych na sekundę sygnału. Na tych spektrogramach z łatwością można zauważyć
@@ -263,14 +264,14 @@ trudne w przypadku kodeków własnościowych których architektura jest niedost�
 publicznie.
 \section{Nowa koncepcja}
 Zaproponowano nowy system detekcji kompresji audio, który poszerza metodę
-opisaną w \cite{Kim2018LossyAC}. Aby zredukować ograniczenia oryginalnego
+opisaną w \textit{Lossy Audio Compression Identification}\cite{Kim2018LossyAC}. Aby zredukować ograniczenia oryginalnego
 rozwiązania, zamiast stosować metodę znajdywania maksimum i liczenia średniej
 geometrycznej z uzyskanych różnic energii uzyskane transformaty wykorzystane
 zostaną do treningu sieci neuronowej w celu wydobycia z nich informacji o
 metodzie i poziomie kompresji sygnału. Ponadto zostanie wytrenowana druga sieć
 która na podstawie spektrogramu sygnału wyznaczy rodzaj i parametry
 transformaty zastosowanej do kompresji sygnału tak aby współczynnik pewności
-(ang.  \textit{confidence}) sieci rozpoznającej był jak największy.  Pozwoli to
+(ang. \textit{confidence}) sieci rozpoznającej był jak największy. Pozwoli to
 na skuteczne rozpoznanie rodzaju i parametrów kodeka zastosowanego do kompresji
 pliku bez konieczności posiadania uprzedniej wiedzy o działaniu kodeków.
 Schemat proponowanego rozwiązania przedstawia rysunek \ref{fig:new_scheme}.
